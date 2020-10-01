@@ -114,10 +114,11 @@ function articleMaker(article) {
   const p2 = document.createElement("p");
   const p3 = document.createElement("p");
   const span1 = document.createElement("span");
+  const button = document.createElement("button");
 
   divA.classList.add("article");
   date.classList.add("date");
-  span1.classList.add("span");
+  span1.classList.add("expandButton");
 
   groupArticles.appendChild(divA);
   divA.appendChild(header);
@@ -126,20 +127,21 @@ function articleMaker(article) {
   divA.appendChild(p2);
   divA.appendChild(p3);
   divA.appendChild(span1);
+  span1.appendChild(button);
 
   header.textContent = article.title;
   date.textContent = article.date;
   p1.textContent = article.firstParagraph;
   p2.textContent = article.secondParagraph;
   p3.textContent = article.thirdParagraph;
-  span1.textContent = "Click Me Bro +";
+  button.textContent = `Click Me Bro +`;
 
-  divA.addEventListener("click", () => {
+  span1.addEventListener("click", () => {
     divA.classList.toggle("article-open");
     divA.classList.toggle("article-close");
   });
 
-  return groupArticles;
+  return divA;
 }
 
 data.push({
@@ -152,6 +154,7 @@ data.push({
 
 data.map((item) => {
   articleMaker(item);
+  console.log(item);
 });
 
 /* Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
