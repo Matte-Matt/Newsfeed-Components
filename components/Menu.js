@@ -1,13 +1,47 @@
 // This is the data we will be using, study it but don't change anything, yet.
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out",
 ];
+
+function menuMaker() {
+  let menuMMM = menuItems;
+  let bigMenu = document.createElement("div");
+  let sideBar = document.createElement("ul");
+  let menuLi = document.createElement("li");
+
+  menuMMM.map((item) => {
+    const menuLi = document.createElement("li");
+    menuLi.textContent = item;
+    sideBar.appendChild(menuLi);
+  });
+
+  bigMenu.classList.add("menu");
+
+  bigMenu.appendChild(sideBar);
+
+  menuLi.textContent = menuMMM;
+
+  let menuButton = document.querySelector(".menu-button");
+
+  menuButton.addEventListener("click", () => {
+    bigMenu.classList.toggle("menu--open");
+  });
+
+  return bigMenu;
+}
+
+let header = document.querySelector(".header");
+
+menuItems.map(function (item) {
+  let randomAss = menuMaker(menuItems);
+  header.appendChild(randomAss);
+});
 
 /* 
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
